@@ -10,9 +10,19 @@ public class P_1 {
         str = str.toUpperCase(); // --> 전부 대문자로 변환
         t = Character.toUpperCase(t); // 기준 문자도 대문자로 변환
 
-        for(int i=0; i<str.length(); i++){
-          if(str.charAt(i) == t) answer ++; // 문자열 돌아가면서 인덱싱
+//        for(int i=0; i<str.length(); i++){
+//          if(str.charAt(i) == t) answer ++; // 문자열 돌아가면서 인덱싱
+//        }
+
+        // 향상된 배열로 풀어보기
+
+        for(char c : str.toCharArray()){ // str이 바로 올 수 있는 게 아니다. 저 공간은 배열 또는 컬렉션이 와야한다.
+            if(c == t)
+                answer ++;
         }
+
+
+
         return answer;
     }
     public static void main(String[] args) {
