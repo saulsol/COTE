@@ -11,7 +11,7 @@ public class P_3 {
        String answer = "";
        int min = Integer.MIN_VALUE; // 최소값
 
-       String [] splitValue = s.split(" ");
+       String [] splitValue = s.split(" "); // 띄어쓰기로 구분
         for (String v : splitValue) {
             int len = v.length();
             if(min < len){
