@@ -24,13 +24,23 @@ public class P_8 {
         return answer;
     }
 
+    private static String solution2(String s){
+        String answer = "NO";
+        String temp = new StringBuilder(s).reverse().toString(); // 팰린드롬은 리버스를 해도 같은 값으 나오기 때문에 StringBuilder 사용 가능
+        if(s.equals(temp)) answer = "YES";
+
+        return answer;
+    }
+
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s = br.readLine();
         System.out.println(solution(s.toLowerCase().replaceAll("[^a-z]", ""))); // 대소문자 구문 없기 때문에
+        System.out.println(solution2(s.toLowerCase().replaceAll("[^a-z]", ""))); // 대소문자 구문 없기 때문에
 
-        // replaceAll();
+        // replaceAll(); -> 정규식에 해당되지 않는 값들은 빈 문자열로 변환
 
     }
 }
