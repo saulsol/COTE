@@ -19,6 +19,19 @@ public class P_1 {
         System.out.print(n + " ");
     }
 
+    private static void DFS_2(int n){ // if else 식으로 작성하는게 좀 더 편해보인다는 말을 들음.
+
+        if(n==0)
+            return;
+        else{
+            DFS(n-1);
+            System.out.println(n+ " ");
+        }
+
+    }
+
+
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
