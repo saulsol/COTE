@@ -35,7 +35,7 @@ public class P_1 {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int rv = Integer.parseInt(br.readLine());
+        int rv = Integer.parseInt(br.readLine()); // readValue
 
         DFS(rv);
 
