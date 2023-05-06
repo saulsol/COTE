@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 public class P_2 {
 
     private static void DFS(int n){
-        // 몫이 0이 될 때 까지 계속 나눠준다.
+        // 몫이 0이 될 때까지 계속 나눠준다.
         if(n == 0) return;
         else{
             DFS(n/2);
