@@ -12,8 +12,8 @@ public class P_2 {
         // 몫이 0이 될 때 까지 계속 나눠준다.
         if(n == 0) return;
         else{
-            System.out.print(n%2);
             DFS(n/2);
+            System.out.print(n%2); // 마지막에 나눈 나머지 부터 출력해야 하니깐
         }
 
     }
