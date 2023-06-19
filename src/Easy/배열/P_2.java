@@ -24,9 +24,6 @@ public class P_2 {
             i++;
         }
 
-
-
-
         return arrayList;
     }
 
