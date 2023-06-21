@@ -21,17 +21,16 @@ public class HOJUSIC {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine()); // 총 후보자 수
-        String [] subMemberList = new String[n];
-
-
-
+        String[] subMemberList = new String[n];
 
         int i = 0;
 
-        while(i<n && n<=20){
+        while (i < n && n <= 20) {
             subMemberList[i] = br.readLine();
             i++;
         }
+
+
         int[][] likes = new int[1000][n];
         int voteMember = 0; // 총 투표자 수
 
@@ -54,17 +53,12 @@ public class HOJUSIC {
         print(likes, voteMember);
 
 
-
-
-
-
-
     }
 
-    static void print (int [][] array, int count){
+    private static void print(int[][] array, int count) {
 
-        for(int i=0; i<count; i++){
-            for(int j=0; j<array[0].length; j++){
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < array[0].length; j++) {
                 System.out.printf("%d ", array[i][j]);
             }
             System.out.println();
@@ -72,5 +66,31 @@ public class HOJUSIC {
 
     }
 
-
 }
+
+
+//    // 1순위 집계
+//    private static int first(int [][] array, int count, int memberCount){
+//
+//        int [] memberScore = new int[memberCount];
+//
+//
+//        int index;
+//        for(int i = 0; i<count; i++){
+//            index = array[count][0] - 1;
+//            memberScore[index] += 1;
+//        }
+//
+//
+//
+//        // 최대값을 갖는 배열 index 리턴
+//        int maxIndex;
+//        int maxValue = memberScore[0];
+//        for(int i=0; i<memberScore.length; i++){
+//            if(maxValue < memberScore[i]){
+//                maxValue = memberScore[i];
+//                maxIndex = i;
+//            }
+//        }
+
+
