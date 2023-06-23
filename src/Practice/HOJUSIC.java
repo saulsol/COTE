@@ -13,84 +13,109 @@ package Practice;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class HOJUSIC {
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         int n = Integer.parseInt(br.readLine()); // 총 후보자 수
-        String[] subMemberList = new String[n];
+        String[] memberList = new String[n];
 
-        int i = 0;
+        for (int i = 0; i < n; i++) {
+            memberList[i] = br.readLine(); // 배열에 이름을 담음
+        }
 
-        while (i < n && n <= 20) {
-            subMemberList[i] = br.readLine();
-            i++;
+        Queue<Integer>[] voters = new LinkedList[1000]; // 0 ~ 999 번까지, 투표용지
+
+
+        int count = 0; // 몇 명의 사람이 투표를 했는가
+        int [] scoreBoard = new int[1000];
+        String readLine = "";
+
+        while((readLine = br.readLine()) != null && readLine.length() != 0){
+
+            String [] memberNameList = readLine.split(" ");
+            voters[count] = new LinkedList<>();
+
+            openBallotPaper(voters, memberNameList, count, n);
+
+            count++;
+        }
+
+        while(true){
+
+            scoreBallotPaper(count, voters, scoreBoard);
+
+            int maxi = Integer.MIN_VALUE, mini = Integer.MAX_VALUE;
+
+            for (int i = 0; i < n; i++) {
+                maxi = Math.max(maxi, scoreBoard[i]);
+                if (scoreBoard[i] != -1) {
+                    mini = Math.min(mini, scoreBoard[i]);
+                }
+            }
+
+            // 과반수 또는 전부다 동점자인 경우
+            if (maxi * 2 > count || maxi == mini) {
+                for (int i = 0; i < n; i++) {
+                    if (scoreBoard[i] == maxi) {
+                        System.out.println(memberList[i]);
+                    }
+                }
+                return;
+            }
+
+            for (int i = 0; i < n; i++) {
+                if (scoreBoard[i] == mini) {
+                    scoreBoard[i] = -1; // 탈락자 점수 -1 점
+                } else if (scoreBoard[i] != -1) {
+                    scoreBoard[i] = 0; // 점수판 0점 초기화
+                }
+            }
+
+
+
+
+            }
+
+
         }
 
 
-        int[][] likes = new int[1000][n];
-        int voteMember = 0; // 총 투표자 수
 
-        while (voteMember < 1000) {
-            String line = br.readLine();
-            if (line.isEmpty()) {
-                break; // 빈 줄이면 반복문 종료
-            }
 
-            StringTokenizer likesTokenizer = new StringTokenizer(line, " ");
 
-            for (int j = 0; j < n; j++) {
-                likes[voteMember][j] = Integer.parseInt(likesTokenizer.nextToken());
-            }
+    private static void openBallotPaper(Queue<Integer>[] voters, String[] memberNameList, int count, int n) {
 
-            voteMember++;
+        voters[count] = new LinkedList<>();
+
+        for(int i=0; i<n; i++){
+            voters[count].add(Integer.parseInt(memberNameList[i]) -1);
         }
+    }
 
 
-        print(likes, voteMember);
+    private static void scoreBallotPaper(int count, Queue<Integer>[] voters, int [] scoreBoard) {
 
+        for(int i=0; i<count; i++){
+
+            while(scoreBoard[voters[i].peek()] == -1){
+                voters[i].poll();
+            }
+            scoreBoard[voters[i].peek()]++;
+        }
 
     }
 
-    private static void print(int[][] array, int count) {
 
-        for (int i = 0; i < count; i++) {
-            for (int j = 0; j < array[0].length; j++) {
-                System.out.printf("%d ", array[i][j]);
-            }
-            System.out.println();
-        }
 
-    }
+
+
 
 }
-
-
-//    // 1순위 집계
-//    private static int first(int [][] array, int count, int memberCount){
-//
-//        int [] memberScore = new int[memberCount];
-//
-//
-//        int index;
-//        for(int i = 0; i<count; i++){
-//            index = array[count][0] - 1;
-//            memberScore[index] += 1;
-//        }
-//
-//
-//
-//        // 최대값을 갖는 배열 index 리턴
-//        int maxIndex;
-//        int maxValue = memberScore[0];
-//        for(int i=0; i<memberScore.length; i++){
-//            if(maxValue < memberScore[i]){
-//                maxValue = memberScore[i];
-//                maxIndex = i;
-//            }
-//        }
 
 
