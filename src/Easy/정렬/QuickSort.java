@@ -20,7 +20,7 @@ public class QuickSort {
 
     private static int partition(int [] arr, int start, int end){
 
-        int pivot = arr[(start + end) / 2];
+        int pivot = arr[(start + end) / 2]; // 중앙에 있는 값 피봇
         while(start <= end){
 
             while (arr[start] < pivot) start ++;
@@ -33,7 +33,7 @@ public class QuickSort {
             }
 
         }
-
+         // start 지점이 end 지점을 역전했을 경우 리턴
         return start;
     }
 
