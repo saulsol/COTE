@@ -11,12 +11,15 @@ package Easy.정렬;
 // 가장 큰 값이 항상 루트에 오게 한다.
 // 부모 노드가 자식 노드보다 큰 값
 
+import java.util.Scanner;
+
 // 병합 정렬보단 아니다.
 public class BinaryHeaps {
 
-    static void swap(int [] a, int idx, int idx2){
-        int temp = a[idx];
-        a[idx] = a[idx2];
+
+    static void swap(int [] a, int idx1, int idx2){
+        int temp = a[idx1];
+        a[idx1] = a[idx2];
         a[idx2] = temp;
     }
 
@@ -47,17 +50,32 @@ public class BinaryHeaps {
         }
 
         for(int i = n-1; i >0; i--){
-            swap(a, 0, i-1);
+            swap(a, 0, i);
             downHeap(a, 0, i - 1);
         }
 
     }
 
-
-
-
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("힙 정렬");
+        System.out.print("요솟수");
+
+        int nx = sc.nextInt();
+        int [] x = new int[nx];
+
+        for(int i=0; i<nx; i++){
+            x[i] = sc.nextInt();
+        }
+
+        heapSort(x, nx); // 배열 x를 정렬한다.
+
+        System.out.println("오름차순으로 정렬합니다.");
+        for(int i=0; i<nx; i++){
+            System.out.println("x[" + i + "] = " + x[i]);
+        }
     }
 
 }
