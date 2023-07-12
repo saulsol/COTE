@@ -20,8 +20,36 @@ public class BinaryHeaps {
         a[idx2] = temp;
     }
 
-    static void downHeap(int [] a, int left, int right){
+    static void downHeap(int [] a, int left, int right) {
+        int temp = a[left]; // 루트
 
+        int child; // 큰 값을 가진 노드
+        int parent; // 부모
+
+        for (parent = left; parent < (right + 1) / 2; parent = child) {
+
+            int cl = parent * 2 + 1;
+            int cr = cl + 1;
+            child = (cr <= right && a[cr] > a[cl]) ? cr : cl;
+
+            if (temp >= a[child])
+                break;
+            a[parent] = a[child];
+        }
+
+        a[parent] = temp;
+
+    }
+
+    static void heapSort(int [] a, int n){
+        for(int i = (n-1)/2; i>=0; i--){
+            downHeap(a, i, n-1);
+        }
+
+        for(int i = n-1; i >0; i--){
+            swap(a, 0, i-1);
+            downHeap(a, 0, i - 1);
+        }
 
     }
 
