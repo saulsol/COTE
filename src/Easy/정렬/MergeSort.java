@@ -6,7 +6,7 @@ public class MergeSort {
     public static void mergeSort(int[] arr, int left, int right) {
         if(left < right) {
             int i;
-            int center = (left + right) / 2;
+            int center = (left + right) / 2;      //
             int p = 0;                            //임시 배열 인덱스
             int j = 0;
             int k = left;                        //원본 배열 인덱스
@@ -33,7 +33,7 @@ public class MergeSort {
         int N = arr.length;
         buff = new int[N];
 
-        mergeSort(arr, 0, N-1);
+        mergeSort(arr, 0, N-1); // 0부터 배열의 인덱스 만큼 돌려라
 
         for(int a : arr) {
             System.out.print(a+" ");

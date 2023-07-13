@@ -10,49 +10,52 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class SelectionSort {
-
-    private static void solution(int [] v, int count){
-
-        int idx = 0;
+    private static void solution(int[] v, int count) {
+        int idx;
         int temp;
 
-        for (int i=0; i<count-1; i++){
-            idx = i; // 초기화 해야함
-            for(int j=i+1; j<count; j++){
-                if(v[j] < v[idx]){
-                    idx = j;
-                }
+        for (int i = 0; i < count - 1; i++) {
+            idx = i; // 현재 인덱스를 초기화
 
+            // 최솟값을 찾기 위해 현재 인덱스(i) 다음부터 배열 끝까지 탐색
+            for (int j = i + 1; j < count; j++) {
+                if (v[j] < v[idx]) {
+                    idx = j; // 최솟값의 인덱스로 갱신
+                }
             }
 
+            // 현재 인덱스(i)와 최솟값의 인덱스(idx)에 해당하는 요소를 교환
             temp = v[i];
             v[i] = v[idx];
             v[idx] = temp;
         }
-
-
     }
 
-
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int count = Integer.parseInt(br.readLine());
-        int [] values = new int[count];
+
+        int count = Integer.parseInt(br.readLine()); // 정렬할 요소의 개수 입력
+        int[] values = new int[count]; // 입력된 요소를 저장할 배열
         StringTokenizer tokenizer = new StringTokenizer(br.readLine(), " ");
 
-        for(int i=0; i<count; i++){
+        // 입력된 요소를 배열에 저장
+        for (int i = 0; i < count; i++) {
             values[i] = Integer.parseInt(tokenizer.nextToken());
         }
 
+        solution(values, count); // 배열을 선택 정렬로 정렬
 
-        solution(values, count);
-
-        for(int i=0; i< values.length; i++){
+        // 정렬된 배열 출력
+        for (int i = 0; i < values.length; i++) {
             System.out.printf("%d ", values[i]);
         }
-
-
     }
-
 }
+
+
+
+
+
+
+
+
