@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class P_1 {
+public class SelectionSort {
 
     private static void solution(int [] v, int count){
 
