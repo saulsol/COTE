@@ -24,6 +24,7 @@ public class P_11659_2 {
         long [] S = new long[suNo + 1];
         tokenizer = new StringTokenizer(br.readLine()); // 새로운 라인을 읽음
 
+        // 입력과 동시에 합 배열 생성
         for(int i = 1; i<= suNo; i++ ){
             S[i] = S[i-1] + Integer.parseInt(tokenizer.nextToken()); //합 배열 생성
         }
