@@ -12,7 +12,7 @@ public class P_5 {
 
     private static int solution(int N){
         int sum = 0;
-        int answer = 0;
+        int answer = 1; // 자기 자신 포함
         int lt = 0;
         int m = N / 2 + 1; // 몫 보다 1 더 크다
 
@@ -32,7 +32,6 @@ public class P_5 {
             }
 
         }
-
 
         return answer;
     }
