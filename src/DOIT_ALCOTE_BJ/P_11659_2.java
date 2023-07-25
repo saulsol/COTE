@@ -25,7 +25,7 @@ public class P_11659_2 {
         tokenizer = new StringTokenizer(br.readLine()); // 새로운 라인을 읽음
 
         for(int i = 1; i<= suNo; i++ ){
-            S[i] = S[i-1] + Integer.parseInt(tokenizer.nextToken());
+            S[i] = S[i-1] + Integer.parseInt(tokenizer.nextToken()); //합 배열 생성
         }
 
         for(int q=0; q<quizNo; q++){
