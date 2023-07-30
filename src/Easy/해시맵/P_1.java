@@ -14,7 +14,7 @@ public class P_1 {
         HashMap<Character, Integer> hashMap = new HashMap<>();
 
         for(char c : input.toCharArray()){
-            hashMap.put(c, hashMap.getOrDefault(c , 0) + 1);
+            hashMap.put(c, hashMap.getOrDefault(c, 0) + 1);
         }
 
         Integer maxValue = Collections.max(hashMap.values());
