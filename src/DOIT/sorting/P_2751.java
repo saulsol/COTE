@@ -20,13 +20,13 @@ public class P_2751 {
         }
 
 //        Arrays.sort(array, Collections.reverseOrder());
-        Arrays.sort(array, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1 - o2; // 양수 두 수 바뀜, 음수 두 수 바뀌지 않음, 0은 그대로
-            }
-        });
-
+//        Arrays.sort(array, new Comparator<Integer>() {
+//            @Override
+//            public int compare(Integer o1, Integer o2) {
+//                return o1 - o2; // 양수 두 수 바뀜, 음수 두 수 바뀌지 않음, 0은 그대로
+//            }
+//        });
+        Arrays.sort(array, ((o1, o2) -> o2 - o1));
 
 
 
