@@ -16,68 +16,65 @@ import java.util.Scanner;
 // 병합 정렬보단 아니다.
 public class BinaryHeaps {
 
-    // 두 요소의 위치를 교환하는 메서드
-    static void swap(int[] a, int idx1, int idx2) {
-        int temp = a[idx1];
-        a[idx1] = a[idx2];
-        a[idx2] = temp;
-    }
-
-    // 힙을 구성하는 메서드
-    static void downHeap(int[] a, int left, int right) {
-        int temp = a[left]; // 루트
-
-        int child; // 큰 값을 가진 노드
-        int parent; // 부모
-
-        for (parent = left; parent < (right + 1) / 2; parent = child) {
-            int cl = parent * 2 + 1;
-            int cr = cl + 1;
-            child = (cr <= right && a[cr] > a[cl]) ? cr : cl;
-
-            if (temp >= a[child])
-                break;
-            a[parent] = a[child];
-        }
-
-        a[parent] = temp;
-    }
-
-    // 힙 정렬을 수행하는 메서드
-    static void heapSort(int[] a, int n) {
-        // 초기 힙을 구성
-        for (int i = (n - 1) / 2; i >= 0; i--) {
-            downHeap(a, i, n - 1);
-        }
-
-        // 힙 정렬
-        for (int i = n - 1; i > 0; i--) {
-            // 최대값인 루트와 마지막 요소를 교환
-            swap(a, 0, i);
-            // 힙을 재구성
-            downHeap(a, 0, i - 1);
-        }
-    }
-
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("힙 정렬");
-        System.out.print("요솟수: ");
-        int nx = sc.nextInt();
-        int[] x = new int[nx];
+        // 정렬 되지 않은 배열
+        int[] arr = {5, 8, 4, 7, 10, 9, 2, 1, 6, 3};
 
-        System.out.println("요소를 입력하세요:");
-        for (int i = 0; i < nx; i++) {
-            x[i] = sc.nextInt();
+        /*
+         * < maxHeap 만들기 >
+         * - 부모노드의 값이 자식노드의 값들보다 큰 형태
+         * - i의 초기값은 배열의 제일 끝 자식노드의 부모노드부터 시작한다.
+         */
+        for(int i=arr.length/2-1;i>=0;i--){
+            heapify(arr, arr.length, i);
         }
 
-        heapSort(x, nx); // 배열 x를 정렬한다.
-
-        System.out.println("오름차순으로 정렬합니다.");
-        for (int i = 0; i < nx; i++) {
-            System.out.println("x[" + i + "] = " + x[i]);
+        // 정렬하기
+        for(int i=arr.length-1;i>=0;i--){
+            swap(arr, i, 0); // 최상단 노드와 최하단 노드 값을 교환한다.
+            heapify(arr, i-1, 0); // 루트노드를 기준으로 최대힙을 만든다.
         }
+
+        // 출력
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+
+    public static void heapify(int[] arr, int size, int pNode){
+
+        int parent = pNode; // 부모노드
+        int lNode = pNode * 2 + 1; // 왼쪽 자식노드
+        int rNode = pNode * 2 + 2; // 오른쪽 자식노드
+
+        // size > lNode => 인덱스 범위를 넘어서는지 확인하기 위함
+        if(size > lNode && arr[parent] < arr[lNode]){
+            parent = lNode;
+        }
+
+        if(size > rNode && arr[parent] < arr[rNode]){
+            parent = rNode;
+        }
+
+        // parent에 저장된 값은 자식노드 중 큰 값이 있다면 큰 값의 인덱스 값이 남아있을 것이다.
+        // 초기에 설정한 부모노드의 인덱스와 다르다면 교환을 해준다.
+        if(parent != pNode){
+            swap(arr, pNode, parent);
+
+            /*
+             * 노드와 자리를 바꾸면 최대힙 기준에 맞지 않을 수 있기 때문에
+             * 바뀐 자식노드 아래 최대힙으로 맞춰주기 위함
+             */
+            heapify(arr, size, parent);
+        }
+    }
+
+    public static void swap(int[] arr, int i, int j){
+
+        int tmp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = tmp;
     }
 }
 
