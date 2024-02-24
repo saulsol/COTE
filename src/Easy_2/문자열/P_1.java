@@ -1,6 +1,9 @@
 package Easy_2.문자열;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 
 public class P_1 {
 
@@ -17,11 +20,11 @@ public class P_1 {
         return answer;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
-        String s = sc.nextLine();
-        char c = sc.next().charAt(0);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String s = br.readLine();
+        char c = br.readLine().charAt(0);
         System.out.println(solution(s, c));
 
 
