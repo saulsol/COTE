@@ -9,15 +9,15 @@ import java.io.InputStreamReader;
 public class P_2 {
     public static void solution(String str){
         char [] cArray = str.toCharArray();
-        String answer = "";
+        StringBuilder stringBuilder =new StringBuilder();
         for (char c : cArray) {
             if(Character.isLowerCase(c)){
-                answer += Character.toUpperCase(c);
+                stringBuilder.append(Character.toUpperCase(c));
             }else{
-                answer += Character.toLowerCase(c);
+                stringBuilder.append(Character.toLowerCase(c));
             }
         }
-        System.out.println(answer);
+        System.out.println(stringBuilder);
     }
 
     public static void main(String[] args) throws IOException {
