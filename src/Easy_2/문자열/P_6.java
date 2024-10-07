@@ -3,5 +3,6 @@ package Easy_2.문자열;
 public class P_6 {
     public static void main(String[] args) {
 
+
     }
 }
