@@ -26,9 +26,6 @@ public class P_1 {
 
     // 항상 자신보다 앞 수를 출력해야 하니깐 s.length-1 까지 돌면 된다.
 
-
-
-
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
