@@ -1,4 +1,4 @@
-package BackJun;
+package backJun;
 
 import java.io.*;
 import java.util.StringTokenizer;
